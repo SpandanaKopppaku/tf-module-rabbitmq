@@ -19,7 +19,7 @@ resource "null_resource" "app_install"{
       type     = "ssh"
       user     = "centos"
       password = "DevOps321"
-      host     = aws_instance.allows_rabbitmq.private_ip             # aws_instance.sample.private_ip : Use this only if your provisioner is outside the resource.
+      host     = aws_spot_instance_request.allows_rabbitmq.private_ip             # aws_instance.sample.private_ip : Use this only if your provisioner is outside the resource.
     }
 
     inline = [
