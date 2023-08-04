@@ -22,7 +22,7 @@ resource "null_resource" "app_install"{
     }
 
     inline = [
-      "ansible-pull -U https://github.com/SpandanaKoppaku/ansible.git -e ROOT_PASSWORD=RoboShop@1 -e ENV=dev -e COMPONENT=${var.COMPONENT} roboshop-pull.yml"
+      "ansible-pull -U https://github.com/SpandanaKoppaku/ansible.git -e ENV=dev -e COMPONENT=rabbitmq roboshop-pull.yml"
         ]
     }
 }
