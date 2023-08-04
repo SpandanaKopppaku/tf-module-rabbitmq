@@ -11,7 +11,7 @@ resource "aws_spot_instance_request" "rabbitmq" {
 }
 
 #   # This will be executed on the top of the machine once it's created
-  provisioner "remote-exec" {
+provisioner "remote-exec" {
 
     # connection block establishes connection to this
     connection {
@@ -24,4 +24,4 @@ resource "aws_spot_instance_request" "rabbitmq" {
     inline = [
       "ansible-pull -U https://github.com/SpandanaKoppaku/ansible.git -e ROOT_PASSWORD=RoboShop@1 -e ENV=dev -e COMPONENT=${var.COMPONENT} roboshop-pull.yml"
     ]
-  }
+}
