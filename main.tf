@@ -10,18 +10,19 @@ resource "aws_spot_instance_request" "rabbitmq" {
   }
 }
 
-#   # This will be executed on the top of the machine once it's created
-provisioner "remote-exec" {
+resource "null_resource" "app_install"{
+  provisioner "remote-exec" {
 
     # connection block establishes connection to this
     connection {
       type     = "ssh"
       user     = "centos"
       password = "DevOps321"
-      host     = self.private_ip             # aws_instance.sample.private_ip : Use this only if your provisioner is outside the resource.
+      host     = aws_instance.allows_rabbitmq.private_ip             # aws_instance.sample.private_ip : Use this only if your provisioner is outside the resource.
     }
 
     inline = [
       "ansible-pull -U https://github.com/SpandanaKoppaku/ansible.git -e ROOT_PASSWORD=RoboShop@1 -e ENV=dev -e COMPONENT=${var.COMPONENT} roboshop-pull.yml"
-    ]
+        ]
+    }
 }
