@@ -2,7 +2,7 @@
 resource "aws_spot_instance_request" "rabbitmq" {
   ami                        = data.aws_ami.image.id
   instance_type              = "t3.micro"
-  vpc_security_group_ids     = [aws_security_group.allows_all.id]
+  vpc_security_group_ids     = [aws_security_group.allows_rabbitmq.id]
   wait_for_fulfillment       = true
 
   tags = {
