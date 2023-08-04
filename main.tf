@@ -6,7 +6,7 @@ resource "aws_spot_instance_request" "rabbitmq" {
   wait_for_fulfillment       = true
 
   tags = {
-    Name = var.COMPONENT
+    Name = "roboshop-rabbitmq-${var.ENV}"
   }
 
 #   # This will be executed on the top of the machine once it's created
